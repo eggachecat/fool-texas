@@ -1,0 +1,39 @@
+<ion-view class="animated zoomIn">
+<div class="bar bar-header bar-assertive">
+  <h1 class="title">居民活动室</h1>
+</div>
+
+ <ion-content class="has-header padding">
+   <div class="card animated zoomIn" ng-repeat="game in games">
+    <div class="item item-divider">
+      {{tnMap[game.type]}}
+       <span class="badge badge-positive" style="float: left;">{{game.slogan}}</span>
+    </div>
+    <div class="item item-text-wrap">
+     <!-- {{game}} -->
+     
+      <div class="row">
+        <div class="col" ng-repeat="player in game.players">
+          <img ng-src="img/{{player.uid}}.jpg" 
+               style="width: 100%; border-radius: 50%;">
+        </div>
+      </div>
+    </div>
+    {{user}}
+
+    <div class="item item-divider" 
+         style="padding: 5px;">
+       <button class="button button-small button-assertive"
+               ng-click="join(game)"
+               style="float: right;">
+        加入游戏
+       </button>
+    </div>
+  </div>
+ </ion-content>
+</ion-view>
+
+
+
+
+

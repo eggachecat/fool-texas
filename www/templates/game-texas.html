@@ -1,0 +1,133 @@
+<ion-view class="animated zoomIn">
+	<div class="bar bar-header bar-dark">
+		<a class="button button-icon icon ion-arrow-left-c" href="#/tab/hall"></a>
+	  	<h1 class="title">智障-德州扑克</h1>
+	</div>
+
+	<ion-content class="has-header padding">
+
+
+		 <!-- {{user.uid == gamersArr[seq['num']]['id']}} --> 
+	<div class="row">	
+	  <div class="col" 
+	       ng-repeat="gamer in gamersArr | orderBy : seq track by $index">
+
+	  	<div style="width: 100%;">
+		  	<img ng-src="img/{{gamer.uid}}.jpg" 
+		  		 ng-class="{
+		  		 	'tern-stmp': gamer.uid == player.uid,
+		  		 	'fold': gamer.fold
+		  		 }"
+	             style="max-width: 100%; max-height: 60px; border-radius: 50%;">
+		  	<button class="button button-assertive button-small button-block" 
+						ng-disabled="player.uid != gamer.uid"
+		  			style="padding: 0px">
+		  		{{gamer.chip | currency : undefined : 0 | fooCurrency}}
+		  	</button>
+		  	<button class="button button-balanced button-small button-block" 
+						ng-disabled="player.uid != gamer.uid"
+		  			style="padding: 0px">
+		  		{{gamer.stake | currency : undefined : 0 | fooCurrency}}
+		  	</button>
+	  	</div>
+	  </div>
+	</div>
+
+	<div class="card">
+		<a class="item item-icon-left" href="#">
+			<i class="icon ion-ios-box"></i>
+			总奖池
+			<span class="badge badge-assertive">{{potsObj.jackpot | currency : undefined : 0}}</span>
+		</a>
+		<a class="item item-icon-left" href="#">
+			<i class="icon ion-ios-box-outline"></i>
+			边池1
+			<span class="badge badge-calm">10,000</span>
+		</a>
+	</div>
+
+	<div class="card" ng-hide="me.uid == player.uid">
+		<a class="item item-icon-left" href="#">
+			<i class="icon ion-card"></i>
+			<u>{{player['name']}}</u>-正在下注:
+			<span class="badge badge-assertive">{{player['raise'] | currency : undefined : 0}}</span>
+		</a>
+		<a class="item item-icon-left" href="#">
+			<i class="icon ion-cash"></i>
+			<u>{{player['name']}}</u>-剩余筹码:
+			<span class="badge badge-balanced">{{player['stake'] | currency : undefined : 0}}</span>
+		</a>
+		<div class="item">
+		    <progress value="{{player['raise']}}" max="{{player['stake']}}"></progress>
+	    </div>
+	  	
+	</div>
+
+	<div class="card" ng-show="me.uid == player.uid">
+		<a class="item item-icon-left" href="#">
+			<i class="icon ion-card"></i>
+			下注:
+			<span class="badge badge-assertive">{{player['raise'] | currency : undefined : 0}}</span>
+		</a>
+		<a class="item item-icon-left" href="#">
+			<i class="icon ion-cash"></i>
+			剩余筹码:
+			<span class="badge badge-balanced">{{player['stake'] | currency : undefined : 0}}</span>
+		</a>
+		<div class="item range range-assertive">
+			{{me['raise'] | currency : undefined : 0}}
+		    <input type="range" name="range-assertive" min="0" max="{{me.stake}}" step="1000"
+		    ng-model="me.raise">
+		    {{me['stake'] | currency : undefined : 0}}
+	  	</div>
+	</div>
+
+
+	<progress timer ng-show="me.uid == player.uid" 
+			  value="{{timer}}" max="{{WAIT_SECONDS-1.5}}"></progress>
+	<div class="row button-row" ng-show="me.uid == player.uid">
+
+		<div class="col">
+			<button class="button button-block button-balanced"
+				    ng-disabled="!myTurn"
+			        ng-click="call()">
+				跟牌
+			</button>
+		</div>
+		<div class="col">
+			<button class="button button-block button-assertive"
+					ng-disabled="!myTurn"
+			        ng-click="fold()">
+				弃牌
+			</button>
+		</div>
+		<div class="col">
+			<button class="button button-block button-positive"
+					ng-disabled="!myTurn"
+			        ng-click="raise()">
+				下注
+			</button>
+		</div>
+	</div>
+
+	<button class="button button-positive" 
+			
+			ng-click="next()">
+		next
+	</button>
+	</ion-content>
+</ion-view>
+
+<style type="text/css">
+	.tern-stmp {
+		box-shadow:0 0 4px 2px #0CC;
+	}
+	.fold {
+		-webkit-filter: blur(2px);
+	}
+	.button-row button{
+		height: 100%;
+	}
+	
+
+</style>

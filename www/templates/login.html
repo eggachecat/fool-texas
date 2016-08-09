@@ -1,0 +1,26 @@
+<ion-view view-title="智障囊团德州扑克">
+  <ion-content>
+ 
+	<div class="list card">
+		<div class="item item-image">
+			<img src="img/open.jpg">
+		</div>
+	</div>
+	<div class="list">
+		<label class="item item-input item-stacked-label">
+			<span class="input-label">用户名</span>
+			<input type="email" placeholder="用户名" ng-model="authObj.email">
+		</label>
+		<label class="item item-input item-stacked-label">
+			<span class="input-label">密码</span>
+			<input type="password" placeholder="密码" ng-model="authObj.password">
+		</label>
+	</div>
+
+	<div style="padding: 10px;">
+		<button class="button button-block button-positive" ng-click="login(authObj);authObj={}">
+		  登陆
+		</button>
+	</div>
+  </ion-content>
+</ion-view>

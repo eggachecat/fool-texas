@@ -1,0 +1,107 @@
+/* Empty. Add your own CSS if you like */
+
+
+.button-right {
+	float: right;
+	
+}
+
+progress[value] {
+	-webkit-appearance: none;
+	width: 100%;
+	margin: 0px;
+	height: 10px;
+}
+progress[value]::-webkit-progress-value {
+	background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), 
+						-webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), 
+						-webkit-linear-gradient(left, #09c, #f44);
+	/* background-color: #ef473a; */
+	border-radius: 2px;
+	background-size: 35px 30px, 100% 100%, 100% 100%;
+}
+progress[value]::-webkit-progress-bar {
+	background-color: white;
+	border-radius: 2px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.4) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	transition: width 0.5s ease;
+}
+
+
+
+
+progress[timer] {
+	-webkit-appearance: none;
+	width: 100%;
+	margin: 0px;
+	height: 2px;
+}
+
+progress[timer]::-webkit-progress-value {
+	/* background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), 
+						-webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), 
+						-webkit-linear-gradient(left, #09c, #f44); */
+	background-image: none ;
+	background-color: #387ef5 ;
+	border-radius: 2px;
+	background-size: 35px 30px, 100% 100%, 100% 100%;
+}
+
+
+
+
+progress[timer]::-webkit-progress-bar {
+	background-color: white;
+	border-radius: 0px;
+	box-shadow: none;
+}
+
+progress[timer]::-webkit-progress-value {
+	transition: width 1s linear;
+}
+
+
+/* when showing the picture */
+.card.ng-hide-remove      { animation: 1s flipInX ease; }
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {
+    transform: perspective(400px);
+    transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+
+
